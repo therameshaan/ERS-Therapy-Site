@@ -1,11 +1,5 @@
 import { NextResponse } from 'next/server';
 
-// Pull the key from the server‑side env (never expose it to the client)
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
-if (!OPENROUTER_API_KEY) {
-  throw new Error('Missing OPENROUTER_API_KEY in environment variables');
-}
-
 // OpenRouter endpoint (OpenAI‑compatible)
 const OPERATOR_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
@@ -15,6 +9,14 @@ const X_TITLE = 'ERS Therapy Chatbot';
 
 export async function POST(request: Request) {
   try {
+    const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+    if (!OPENROUTER_API_KEY) {
+      return NextResponse.json(
+        { error: 'Missing OPENROUTER_API_KEY in environment variables' },
+        { status: 500 }
+      );
+    }
+
     const { messages } = await request.json(); // expects [{role: 'user'|'assistant', content: string}, ...]
 
     // Forward the request to OpenRouter
