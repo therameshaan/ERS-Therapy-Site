@@ -1,5 +1,7 @@
+"use client";
+
 import { useState } from 'react';
-import { Droplets, Ear, Eye, Hand, Nose, HeartHandshake } from 'lucide-react';
+import { Droplets, Ear, Eye, Hand, Wind, HeartHandshake } from 'lucide-react';
 
 export default function WellnessTips() {
   const [groundingActive, setGroundingActive] = useState(false);
@@ -35,7 +37,7 @@ export default function WellnessTips() {
     },
     {
       sense: 'Smell',
-      icon: <Nose className="h-5 w-5" />,
+      icon: <Wind className="h-5 w-5" />,
       prompt: 'Notice 2 things you can smell.',
       example: 'Coffee, fresh air, soap.',
     },
@@ -108,7 +110,7 @@ export default function WellnessTips() {
                 {groundingStep === 0 && <Eye className="h-8 w-8 text-indigo-500" />}
                 {groundingStep === 1 && <Hand className="h-8 w-8 text-indigo-500" />}
                 {groundingStep === 2 && <Ear className="h-8 w-8 text-indigo-500" />}
-                {groundingStep === 3 && <Nose className="h-8 w-8 text-indigo-500" />}
+                {groundingStep === 3 && <Wind className="h-8 w-8 text-indigo-500" />}
                 {groundingStep === 4 && <Droplets className="h-8 w-8 text-indigo-500" />}
               </div>
             </div>

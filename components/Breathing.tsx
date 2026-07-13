@@ -1,10 +1,12 @@
+"use client";
+
 import { useState } from 'react';
-import { Activity, Wind, Lungs } from 'lucide-react';
+import { Activity, Wind, Heart, LucideIcon } from 'lucide-react';
 
 type Routine = {
   id: string;
   name: string;
-  icon: React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>;
+  icon: LucideIcon;
   inhale: number;
   hold1: number;
   exhale: number;
@@ -39,7 +41,7 @@ const routines: Routine[] = [
   {
     id: 'belly',
     name: 'Belly Breathing (Diaphragmatic)',
-    icon: Lungs,
+    icon: Heart,
     inhale: 4,
     hold1: 0,
     exhale: 6,
